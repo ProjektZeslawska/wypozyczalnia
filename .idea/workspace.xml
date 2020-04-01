@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cccd65f-a6b6-437d-bf8d-c0ff4cb8bce7" name="Default Changelist" comment="" />
+    <list default="true" id="1cccd65f-a6b6-437d-bf8d-c0ff4cb8bce7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,8 +25,12 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="XAMPP PHP 7.4" />
   <component name="ProjectId" id="1ZivsKoAlJ0BgbXq8m0RNlS8fCC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -29,8 +38,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yo" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
@@ -45,6 +55,9 @@
       <option name="presentableId" value="Default" />
       <updated>1585334934160</updated>
       <workItem from="1585334935423" duration="7615000" />
+      <workItem from="1585423972127" duration="1982000" />
+      <workItem from="1585758517049" duration="494000" />
+      <workItem from="1585767218084" duration="2342000" />
     </task>
     <servers />
   </component>
@@ -52,17 +65,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="548" y="155" key="FileChooserDialogImpl" timestamp="1585767233905">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="548" y="155" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585767233905" />
     <state x="546" y="228" key="NewPhpClassDialog" timestamp="1585334975504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="546" y="228" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1585334975504" />
-    <state x="604" y="337" key="NewPhpFileDialog" timestamp="1585334980541">
+    <state x="604" y="337" key="NewPhpFileDialog" timestamp="1585767572984">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="337" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1585334980541" />
+    <state x="604" y="337" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1585767572984" />
     <state x="277" y="56" key="SettingsEditor" timestamp="1585334948890">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585334948890" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1585767218053">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585767218053" />
   </component>
 </project>

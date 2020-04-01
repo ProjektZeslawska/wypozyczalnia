@@ -61,8 +61,7 @@ else {
             </form>
             <form id="registerForm" action="register.php" method="POST">
                 <h2>Create your free account</h2>
-                <input type="radio" name="status" onclick="pesel()" > Person
-                <input type="radio" name="status" onclick="nip()"> Company
+
 
                 <p>
                     <label id="loginLabel">Login</label>
@@ -80,6 +79,8 @@ else {
                     <label id="pswrd2Label">Confirm password</label>
                     <input id="pswrd2Box" name="pswrd2Box" type="text" placeholder="Password" required>
                 </p>
+                <input id=personRadio" type="radio" name="status" onclick="pesel()" > Person
+                <input id="companyRadio" type="radio" name="status" onclick="nip()"> Company
                 <div id="person" class="person">
                     <p>
                         <label id="peselLabel">Pesel</label>
