@@ -24,6 +24,7 @@ function sanitizePassword($password)
 }
 
 if(isset($_POST['registerButton'])){
+
     $login = sanitizeMail('loginBox');
     $email = sanitizeMail('emailBox');
     $pswrd = sanitizePassword('pswrdBox');
@@ -33,6 +34,5 @@ if(isset($_POST['registerButton'])){
     $surname = sanitizeName('surnameBox');
     $nip = sanitizePassword('nipBox');
     $companyName = sanitizeName('companyBox');
-
 
 }

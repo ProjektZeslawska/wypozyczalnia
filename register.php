@@ -1,4 +1,6 @@
 <?php
+include("Include/Handlers/register-handler.php");
+
 ?>
 
 <html>
@@ -73,36 +75,36 @@ else {
                 </p>
                 <p>
                     <label id="passwordLabel">Password</label>
-                    <input id="pswrdBox" name="pswrdBox" type="text" placeholder="Password" required>
+                    <input id="pswrdBox" name="pswrdBox" type="password" placeholder="Password" required>
                 </p>
                 <p>
                     <label id="pswrd2Label">Confirm password</label>
-                    <input id="pswrd2Box" name="pswrd2Box" type="text" placeholder="Password" required>
+                    <input id="pswrd2Box" name="pswrd2Box" type="password" placeholder="Password" required>
                 </p>
-                <input id=personRadio" type="radio" name="status" onclick="pesel()" > Person
-                <input id="companyRadio" type="radio" name="status" onclick="nip()"> Company
+                <input id=personRadio" type="radio" name="status" value='person' onclick="pesel()" required > Person
+                <input id="companyRadio" type="radio" name="status" value='company' onclick="nip()" required> Company
                 <div id="person" class="person">
                     <p>
                         <label id="peselLabel">Pesel</label>
-                        <input id="peselBox" name="peselBox" type="text" placeholder="Pesel" required>
+                        <input id="peselBox" name="peselBox" type="text" placeholder="Pesel" >
                     </p>
                     <p>
                         <label id="nameLabel">Imię</label>
-                        <input id="nameBox" name="nameBox" type="text" placeholder="Name" required>
+                        <input id="nameBox" name="nameBox" type="text" placeholder="Name" >
                     </p>
                     <p>
                         <label id="surnameLabel">Nazwisko</label>
-                        <input id="surnameBox" name="surnameBox" type="text" placeholder="Surname" required>
+                        <input id="surnameBox" name="surnameBox" type="text" placeholder="Surname" >
                     </p>
                 </div>
                 <div id="company" class="company">
                     <p>
                         <label id="nipLabel">NIP</label>
-                        <input id="nipBox" name="nipBox" type="text" placeholder="NIP" required>
+                        <input id="nipBox" name="nipBox" type="text" placeholder="NIP" >
                     </p>
                     <p>
                         <label id="companyNameLabel">Company name</label>
-                        <input id="companyBox" name="companyBox" type="text" placeholder="Company name" required>
+                        <input id="companyBox" name="companyBox" type="text" placeholder="Company name" >
                     </p>
                 </div>
                 <button id="registerButton" type="submit" name="registerButton">Sign Up</button>
