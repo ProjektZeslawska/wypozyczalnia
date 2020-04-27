@@ -31,25 +31,25 @@ body {
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: #fff;
+    color: #a0a0a0;
 }
 
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #fff;
+    color: #a0a0a0;
     opacity: 1;
 }
 
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #fff;
+    color: #a0a0a0;
     opacity: 1;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #fff;
+    color: #a0a0a0;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: #fff;
+    color: #a0a0a0;
 }
 
 #inputContainer {
@@ -76,7 +76,7 @@ body {
 }
 
 #inputContainer label {
-    color: #a0a0a0;
+    color: #ffffff;
     font-size: 13px;
     margin-top: 15px;
 }
@@ -138,10 +138,7 @@ body {
 /*}*/
 
 #inputContainer .errorMessage {
-    color: RED;
+    color: BLACK;
     font-size: 12px;
     display: block;
-}
-.company, .person{
-    display: none;
 }

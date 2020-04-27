@@ -25,14 +25,14 @@ function sanitizePassword($password)
 
 if(isset($_POST['registerButton'])){
 
-    $login = sanitizeMail('loginBox');
-    $email = sanitizeMail('emailBox');
-    $pswrd = sanitizePassword('pswrdBox');
-    $pswrd2 = sanitizePassword('pswrd2Box');
-    $pesel = sanitizePassword('peselBox');
-    $name = sanitizeName('nameBox');
-    $surname = sanitizeName('surnameBox');
-    $nip = sanitizePassword('nipBox');
-    $companyName = sanitizeName('companyBox');
+    $login = sanitizeMail($_POST['loginBox']);
+    $email = sanitizeMail($_POST['emailBox']);
+    $pswrd = sanitizePassword($_POST['pswrdBox']);
+    $pswrd2 = sanitizePassword($_POST['pswrd2Box']);
+    $name = sanitizeName($_POST['nameBox']);
+    $surname = sanitizeName($_POST['surnameBox']);
+
+
+    $account->register($login, $pswrd, $pswrd2, $email, $name, $surname);
 
 }
