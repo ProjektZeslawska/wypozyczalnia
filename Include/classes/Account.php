@@ -11,6 +11,19 @@ class Account
         $this->errorArray = array();
         $this->con = $con;
     }
+    public function login($login, $password)
+    {
+        $password = md5($password);
+
+        $query = mysqli_query($this->con, "SELECT * FROM users WHERE Username='$login' AND Password='$password'");
+
+        if(mysqli_num_rows($query) == 1)
+            return true;
+        else{
+            array_push($this->errorArray, Constants::$incorrectCredits);
+            return false;
+        }
+    }
 
     public function register($login, $password, $password2, $email, $name, $surname)
     {
@@ -20,14 +33,25 @@ class Account
         $this->validateName($name);
         $this->validateSurname($surname);
 
-        if(empty($this->errorArray) == true) {
-            //Insert into db
-            return true;
-        }
-        else {
+        if (empty($this->errorArray)) {
+            return $this->insertData($login, $password, $email, $name, $surname);
+        } else {
             return false;
         }
     }
+
+    public function insertData($login, $password, $email, $name, $surname)
+    {
+        $encryptedPw = md5($password);
+
+        $profiePic = "Assets/Images/ProfilePic.jpg";
+        $date = date("Y-m-d");
+        $result = mysqli_query($this->con, "INSERT INTO users VALUES 
+        ('', '$login', '$encryptedPw', '$name', '$surname', '$email', '$date', '$profiePic')");
+
+        return $result;
+    }
+
     public function getError($error)
     {
         if (!in_array($error, $this->errorArray)) {
@@ -36,10 +60,17 @@ class Account
         return "<span class='errorMessage'>$error</span>";
     }
 
+    //region VALIDATE
     private function validateLogin($login)
     {
         if (strlen($login) > 25 || strlen($login) < 5) {
             array_push($this->errorArray, Constants::$usernameCharacters);
+            return;
+        }
+
+        $checkUsernameQuery = mysqli_query("SELECT Username FROM users WHERE Username='$login'");
+        if(mysqli_num_rows($checkUsernameQuery) != 0){
+            array_push($this->errorArray, Constants::$checkUsernameQuery);
             return;
         }
     }
@@ -63,8 +94,14 @@ class Account
             array_push($this->errorArray, Constants::$emailInvalid);
             return;
         }
+        $checkEmailQuery = "SELECT Email FROM users WHERE Email='$email'";
+        if(mysqli_num_rows($checkEmailQuery) != 0){
+            array_push($this->errorArray, Constants::$checkEmailQuery);
+            return;
+        }
 
     }
+
     private function validateName($name)
     {
         if (strlen($name) > 30 || strlen($name) < 2) {
@@ -81,5 +118,5 @@ class Account
 
         }
     }
-
+//endregion
 }

@@ -5,8 +5,14 @@ include("Include/classes/Constants.php");
 
 $account = new Account($con);
 
-
 include("Include/Handlers/register-handler.php");
+include ("Include/Handlers/login-handler.php");
+
+function getInputValue($name){
+    if(isset($_POST[$name])){
+        echo $_POST[$name];
+    }
+}
 
 ?>
 
@@ -43,11 +49,11 @@ if (isset($_POST['registerButton'])) {
                 <h2>LOGIN TO YOUR ACCOUNT</h2>
                 <p>
                     <?php echo $account->getError(Constants::$incorrectCredits) ?>
-                    <label id="usernameLabel">Nazwa użytkownika</label>
+                    <label for="usernameBox">Nazwa użytkownika</label>
                     <input id="usernameBox" name="usernameBox" type="text" placeholder="Nazwa użytkownika" required>
                 </p>
                 <p>
-                    <label id="passwordLabel">Hasło</label>
+                    <label for="passwordBox">Hasło</label>
                     <input id="passwordBox" name="passwordBox" type="password" placeholder="Hasło" required>
                 </p>
                 <button id="loginButton" type="submit" name="loginButton">Log In</button>
@@ -59,15 +65,17 @@ if (isset($_POST['registerButton'])) {
             <form id="registerForm" action="register.php" method="POST">
                 <h2>Create your free account</h2>
                 <p>
-                    <?php echo $account->getError(Constants::$usernameCharacters) ?>
-                    <?php echo $account->getError(Constants::$checkUsernameQuery) ?>
-                    <label id="loginLabel">Nazwa użytkownika</label>
-                    <input id="loginBox" name="loginBox" type="text" placeholder="Nazwa użytkownika" required>
+                    <?php echo $account->getError(Constants::$usernameCharacters); ?>
+                    <?php echo $account->getError(Constants::$checkUsernameQuery); ?>
+                    <label for="loginBox">Nazwa użytkownika</label>
+                    <input id="loginBox" name="loginBox" type="text" placeholder="Nazwa użytkownika" required
+                           value="<?php getInputValue('loginBox') ?>" >
                 </p>
                 <p>
                     <?php echo $account->getError(Constants::$checkEmailQuery) ?>
-                    <label id="emailLabel">E-mail</label>
-                    <input id="emailBox" name="emailBox" type="text" placeholder="E-mail" required>
+                    <label for="emailBox">E-mail</label>
+                    <input id="emailBox" name="emailBox" type="text" placeholder="E-mail" required
+                           value="<?php getInputValue('emailBox') ?>">
                     <?php echo $account->getError(Constants::$emailInvalid); ?>
 
                 </p>
@@ -75,22 +83,25 @@ if (isset($_POST['registerButton'])) {
                     <?php echo $account->getError(Constants::$passwordsDoNoMatch); ?>
                     <?php echo $account->getError(Constants::$passwordNotAlphanumeric); ?>
                     <?php echo $account->getError(Constants::$passwordCharacters); ?>
-                    <label id="passwordLabel">Hasło</label>
-                    <input id="pswrdBox" name="pswrdBox" type="password" placeholder="Hasło" required>
+                    <label for="pswrdBox">Hasło</label>
+                    <input id="pswrdBox" name="pswrdBox" type="password" placeholder="Hasło" required
+                    >
                 </p>
                 <p>
-                    <label id="pswrd2Label">Potwierdź hasło</label>
+                    <label for="pswrd2Box">Potwierdź hasło</label>
                     <input id="pswrd2Box" name="pswrd2Box" type="password" placeholder="Hasło" required>
                 </p>
                 <p>
                     <?php echo $account->getError(Constants::$firstNameCharacters); ?>
-                    <label id="nameLabel">Imię</label>
-                    <input id="nameBox" name="nameBox" type="text" placeholder="Imię">
+                    <label for="nameBox">Imię</label>
+                    <input id="nameBox" name="nameBox" type="text" placeholder="Imię"
+                           value="<?php getInputValue('nameBox') ?>">
                 </p>
                 <p>
                     <?php echo $account->getError(Constants::$lastNameCharacters); ?>
-                    <label id="surnameLabel">Nazwisko</label>
-                    <input id="surnameBox" name="surnameBox" type="text" placeholder="Nazwisko">
+                    <label for="surnameBox">Nazwisko</label>
+                    <input id="surnameBox" name="surnameBox" type="text" placeholder="Nazwisko"
+                           value="<?php getInputValue('surnameBox') ?>">
                 </p>
                 <button id="registerButton" type="submit" name="registerButton">Sign Up</button>
                 <div class="hasAccountText">

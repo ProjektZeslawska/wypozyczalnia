@@ -33,6 +33,10 @@ if(isset($_POST['registerButton'])){
     $surname = sanitizeName($_POST['surnameBox']);
 
 
-    $account->register($login, $pswrd, $pswrd2, $email, $name, $surname);
+    $wasSuccessful = $account->register($login, $pswrd, $pswrd2, $email, $name, $surname);
+    if($wasSuccessful){
+        $_SESSION['LoggedIn'] = $login;
+        header("Location: mainPage.php");
+    }
 
 }
