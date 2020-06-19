@@ -1,12 +1,12 @@
 <?php
-include("dbConfig.php");
-include("Include/classes/Account.php");
-include("Include/classes/Constants.php");
+include("include/dbConfig.php");
+include("include/classes/Account.php");
+include("include/classes/Constants.php");
 
 $account = new Account($con);
 
-include("Include/Handlers/register-handler.php");
-include ("Include/Handlers/login-handler.php");
+include("include/handlers/register-handler.php");
+include("include/handlers/login-handler.php");
 
 function getInputValue($name){
     if(isset($_POST[$name])){
@@ -16,12 +16,12 @@ function getInputValue($name){
 
 ?>
 
-<html>
+<!DOCTYPE html>
 <head>
     <title>REGISTER</title>
-    <link rel="stylesheet" type="text/css" href="register.css">
+    <link rel="stylesheet" type="text/css" href="assets/style/register.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="Assets/js/register.js"></script>
+    <script src="assets/js/register.js"></script>
 </head>
 <body>
 <?php
@@ -42,6 +42,7 @@ if (isset($_POST['registerButton'])) {
 }
 
 ?>
+
 <div id="background">
     <div id="loginContainer">
         <div id="inputContainer">

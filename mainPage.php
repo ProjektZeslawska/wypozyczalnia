@@ -1,19 +1,12 @@
 <?php
-include("dbConfig.php");
+require_once("include/header.php");
 
-if (isset($_SESSION['LoggedIn'])) {
-    $loggedIn = $_SESSION['LoggedIn'];
-} else {
-    header("Location: register.php");
-}
-?>
-<html>
-<head>
-    <title>Strona główna</title>
-</head>
-<body>
-<h2>LOGOWANIE DZIAŁA</h2>
-</body>
-</html>
+$preview = new PreviewProvider($con, $loggedIn);
+echo $preview->createPreviewVideo(null);
+
+$containers = new CategoryContainers($con, $loggedIn);
+echo $containers->showAllCategories();
+
+
 
 
