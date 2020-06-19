@@ -3,8 +3,13 @@ require_once("include/dbConfig.php");
 require_once("include/classes/PreviewProvider.php");
 require_once("include/classes/CategoryContainers.php");
 require_once("include/classes/Entity.php");
+require_once("include/classes/EntityProvider.php");
+require_once("include/classes/ErrorMessage.php");
+require_once("include/classes/SeasonProvider.php");
+require_once("include/classes/Video.php");
+require_once("include/classes/Season.php");
 
-if (!isset($_SESSION['LoggedIn'])){
+if(!isset($_SESSION['LoggedIn'])){
     header("Location: register.php");
 }
 
