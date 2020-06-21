@@ -1,13 +1,15 @@
 <?php
-require_once("include/dbConfig.php");
-require_once("include/classes/PreviewProvider.php");
-require_once("include/classes/CategoryContainers.php");
-require_once("include/classes/Entity.php");
-require_once("include/classes/EntityProvider.php");
-require_once("include/classes/ErrorMessage.php");
-require_once("include/classes/SeasonProvider.php");
-require_once("include/classes/Video.php");
-require_once("include/classes/Season.php");
+require_once("includes/dbConfig.php");
+require_once("includes/classes/PreviewProvider.php");
+require_once("includes/classes/CategoryContainers.php");
+require_once("includes/classes/Entity.php");
+require_once("includes/classes/EntityProvider.php");
+require_once("includes/classes/ErrorMessage.php");
+require_once("includes/classes/SeasonProvider.php");
+require_once("includes/classes/Season.php");
+require_once("includes/classes/Video.php");
+require_once("includes/classes/VideoProvider.php");
+require_once("includes/classes/User.php");
 
 if(!isset($_SESSION['LoggedIn'])){
     header("Location: register.php");
@@ -30,6 +32,11 @@ $loggedIn = $_SESSION['LoggedIn'];
 <body>
 <div class="wrapper">
 
+    <?php
+    if(!isset($hideNav)){
+        include_once("includes/navBar.php");
+    }
+    ?>
 
 
 

@@ -12,6 +12,25 @@ class Account {
         $this->con = $con;
     }
 
+    public function updateDetails($fn, $ln, $em, $un) {
+        $this->validateName($fn);
+        $this->validateSurname($ln);
+        $this->validateNewEmail($em, $un);
+
+        if(empty($this->errorArray)) {
+            $query = $this->con->prepare("UPDATE users SET firstName=:fn, lastName=:ln, email=:em
+                                            WHERE username=:un");
+            $query->bindValue(":fn", $fn);
+            $query->bindValue(":ln", $ln);
+            $query->bindValue(":em", $em);
+            $query->bindValue(":un", $un);
+
+            return $query->execute();
+        }
+
+        return false;
+    }
+
     public function login($login, $password) {
         $password = md5($password);
         $query = $this->con->prepare("SELECT * FROM users WHERE Username='$login' AND Password='$password'");
@@ -59,8 +78,13 @@ class Account {
         return "<span class='errorMessage'>$error</span>";
     }
 
+    public function getFirstError() {
+        if(!empty($this->errorArray)) {
+            return $this->errorArray[0];
+        }
+    }
     //region VALIDATE
-    private function validateLogin($login) {
+    public function validateLogin($login) {
         if (strlen($login) > 25 || strlen($login) < 5) {
             array_push($this->errorArray, Constants::$usernameCharacters);
             return;
@@ -111,6 +135,54 @@ class Account {
             array_push($this->errorArray, Constants::$lastNameCharacters);
             return;
 
+        }
+    }
+
+    private function validateNewEmail($em, $un) {
+
+        if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
+            array_push($this->errorArray, Constants::$emailInvalid);
+            return;
+        }
+
+        $query = $this->con->prepare("SELECT * FROM users WHERE email=:em AND username != :un");
+        $query->bindValue(":em", $em);
+        $query->bindValue(":un", $un);
+
+        $query->execute();
+
+        if($query->rowCount() != 0) {
+            array_push($this->errorArray, Constants::$emailTaken);
+        }
+    }
+
+    public function updatePassword($oldPw, $pw, $pw2, $un) {
+        $this->validateOldPassword($oldPw, $un);
+        $this->validatePassword($pw, $pw2);
+
+        if(empty($this->errorArray)) {
+            $query = $this->con->prepare("UPDATE users SET password=:pw WHERE username=:un");
+            $pw = hash("sha512", $pw);
+            $query->bindValue(":pw", $pw);
+            $query->bindValue(":un", $un);
+
+            return $query->execute();
+        }
+
+        return false;
+    }
+
+    public function validateOldPassword($oldPw, $un) {
+        $pw = hash("sha512", $oldPw);
+
+        $query = $this->con->prepare("SELECT * FROM users WHERE username=:un AND password=:pw");
+        $query->bindValue(":un", $un);
+        $query->bindValue(":pw", $pw);
+
+        $query->execute();
+
+        if($query->rowCount() == 0) {
+            array_push($this->errorArray, Constants::$passwordIncorrect);
         }
     }
 //endregion

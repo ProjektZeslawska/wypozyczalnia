@@ -1,12 +1,12 @@
 <?php
-include("include/dbConfig.php");
-include("include/classes/Account.php");
-include("include/classes/Constants.php");
+include("includes/dbConfig.php");
+include("includes/classes/Account.php");
+include("includes/classes/Constants.php");
 
 $account = new Account($con);
 
-include("include/handlers/register-handler.php");
-include("include/handlers/login-handler.php");
+include("includes/handlers/register-handler.php");
+include("includes/handlers/login-handler.php");
 
 function getInputValue($name){
     if(isset($_POST[$name])){
