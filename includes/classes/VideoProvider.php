@@ -1,5 +1,16 @@
 <?php
+
+/**
+ * Klasa wyświetlajaca video
+ * Class VideoProvider
+ */
 class VideoProvider {
+    /**
+     * Funkcja wyświetlajaca po zakończeniu filmu kolejny sugerowany odcinek
+     * @param $con
+     * @param $currentVideo
+     * @return Video
+     */
     public static function getUpNext($con, $currentVideo) {
         $query = $con->prepare("SELECT * FROM videos
                             WHERE entityId=:entityId AND id != :videoId

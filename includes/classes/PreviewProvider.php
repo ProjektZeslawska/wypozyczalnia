@@ -13,6 +13,11 @@ class PreviewProvider{
         $this->username = $username;
     }
 
+    /**
+     * Funkcja tworząca zapowiedź w głównej zakłądce
+     * @param $categoryId
+     * @return string
+     */
     public function createCategoryPreviewVideo($categoryId) {
         $entitiesArray = EntityProvider::getEntities($this->con, $categoryId, 1);
 
@@ -23,6 +28,10 @@ class PreviewProvider{
         return $this->createPreviewVideo($entitiesArray[0]);
     }
 
+    /**
+     * Funkcja tworząca zapowiedź w zakładce TV SHow
+     * @return string
+     */
     public function createTVShowPreviewVideo() {
         $entitiesArray = EntityProvider::getTVShowEntities($this->con, null, 1);
 
@@ -33,6 +42,10 @@ class PreviewProvider{
         return $this->createPreviewVideo($entitiesArray[0]);
     }
 
+    /**
+     * Funkcja tworząca zapowiedź w zakładce Movies
+     * @return string
+     */
     public function createMoviesPreviewVideo() {
         $entitiesArray = EntityProvider::getMoviesEntities($this->con, null, 1);
 
@@ -43,6 +56,11 @@ class PreviewProvider{
         return $this->createPreviewVideo($entitiesArray[0]);
     }
 
+    /**
+     * Funkcja tworząca zapowiedź filmu
+     * @param $entity
+     * @return string
+     */
     public function createPreviewVideo($entity){
         if ($entity == null){
             $entity = $this->getRandomEntity();
@@ -76,6 +94,12 @@ class PreviewProvider{
         
                 </div>";
     }
+
+    /**
+     * Funkcja umieszcająca zapowiedź filmu w odpowiednim miejscu na stronie
+     * @param $entity
+     * @return string
+     */
     public function createEntityPreviewSquare($entity){
         $id = $entity->getId();
         $thumbnail = $entity->getThumbnail();
@@ -87,6 +111,11 @@ class PreviewProvider{
                     </div>
                  </a>";
     }
+
+    /**
+     * Funkcja wyświetlająca losowe zapowiedzi
+     * @return mixed
+     */
     private function getRandomEntity(){
         $entity = EntityProvider::getEntities($this->con, null, 1);
         return $entity[0];

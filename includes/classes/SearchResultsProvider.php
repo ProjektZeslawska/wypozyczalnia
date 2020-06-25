@@ -10,6 +10,11 @@ class SearchResultsProvider {
         $this->username = $username;
     }
 
+    /**
+     * Funkcja zbierająca wyszukiwany film
+     * @param $inputText
+     * @return string
+     */
     public function getResults($inputText) {
         $entities = EntityProvider::getSearchEntities($this->con, $inputText);
 
@@ -19,6 +24,7 @@ class SearchResultsProvider {
 
         return $html . "</div>";
     }
+
 
     private function getResultHtml($entities) {
         if(sizeof($entities) == 0) {

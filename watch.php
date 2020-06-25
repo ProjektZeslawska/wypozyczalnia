@@ -11,6 +11,7 @@ $video->incrementViews();
 
 $upNextVideo = VideoProvider::getUpNext($con, $video);
 ?>
+
 <div class="watchContainer">
 
     <div class="videoControls watchNav">

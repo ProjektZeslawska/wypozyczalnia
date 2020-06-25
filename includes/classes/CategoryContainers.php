@@ -12,6 +12,10 @@ class CategoryContainers{
         $this->username = $username;
     }
 
+    /**
+     * Funkcja wyświetlajaca wszystkie kategorie z bazy danych
+     * @return string
+     */
     public function showAllCategories(){
         $query = $this->con->prepare("SELECT * FROM categories");
         $query->execute();
@@ -25,6 +29,14 @@ class CategoryContainers{
         return $html . "</div>";
     }
 
+    /**
+     * Funkcja aktualizacją html strony aby wyświetlić wszystko na niej
+     * @param $sqlData
+     * @param $title
+     * @param $tvShows
+     * @param $movies
+     * @return string|void
+     */
     private function getCategoryHtml($sqlData, $title, $tvShows, $movies){
         $categoryId = $sqlData["id"];
         $title = $title == null ? $sqlData["name"] : $title;
@@ -74,6 +86,10 @@ class CategoryContainers{
     }
 
 
+    /**
+     * Funkcja wyświetlajaca wszystkie kateogrie dla zakładki TV SHOWS
+     * @return string
+     */
     public function showTVShowCategories(){
         $query = $this->con->prepare("SELECT * FROM categories");
         $query->execute();
@@ -88,6 +104,10 @@ class CategoryContainers{
         return $html . "</div>";
     }
 
+    /**
+     * Funkcja wyświetlająca wszystkie kategorie dla zakładki Movies
+     * @return string
+     */
     public function showMovieCategories(){
         $query = $this->con->prepare("SELECT * FROM categories");
         $query->execute();

@@ -1,7 +1,14 @@
 <?php
-
+#ifndef
 class EntityProvider{
 
+    /**
+     * Pobieranie wszystkich entities
+     * @param $con
+     * @param $categoryId
+     * @param $limit
+     * @return array
+     */
     public static function getEntities($con, $categoryId, $limit){
 
         $sql = "SELECT * FROM entities ";
@@ -27,6 +34,14 @@ class EntityProvider{
 
         return $result;
     }
+
+    /**
+     * Pobieranie wszystkich entities dla TV Show
+     * @param $con
+     * @param $categoryId
+     * @param $limit
+     * @return array
+     */
     public static function getTVShowEntities($con, $categoryId, $limit) {
 
         $sql = "SELECT DISTINCT(entities.id) FROM `entities` 
@@ -56,6 +71,13 @@ class EntityProvider{
         return $result;
     }
 
+    /**
+     * Pobieranie wszystkich entities dla Movies
+     * @param $con
+     * @param $categoryId
+     * @param $limit
+     * @return array
+     */
     public static function getMoviesEntities($con, $categoryId, $limit) {
 
         $sql = "SELECT DISTINCT(entities.id) FROM `entities` 
@@ -85,6 +107,12 @@ class EntityProvider{
         return $result;
     }
 
+    /**
+     * Pobieranie wszystkich entities dla wyszukiwania
+     * @param $con
+     * @param $term
+     * @return array
+     */
     public static function getSearchEntities($con, $term) {
 
         $sql = "SELECT * FROM entities WHERE name LIKE CONCAT('%', :term, '%') LIMIT 30";

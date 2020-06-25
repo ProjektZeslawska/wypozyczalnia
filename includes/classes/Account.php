@@ -12,6 +12,14 @@ class Account {
         $this->con = $con;
     }
 
+    /**
+     * Jest to funkcja do aktualizacji danych użytkownika
+     * @param $fn
+     * @param $ln
+     * @param $em
+     * @param $un
+     * @return bool
+     */
     public function updateDetails($fn, $ln, $em, $un) {
         $this->validateName($fn);
         $this->validateSurname($ln);
@@ -31,6 +39,12 @@ class Account {
         return false;
     }
 
+    /**
+     * Jest to funkcja do zalogowania użytkownika
+     * @param $login
+     * @param $password
+     * @return bool
+     */
     public function login($login, $password) {
         $password = md5($password);
         $query = $this->con->prepare("SELECT * FROM users WHERE Username='$login' AND Password='$password'");
@@ -44,6 +58,16 @@ class Account {
         }
     }
 
+    /**
+     * Jest to funkcja do zarejestrowania użytkownika
+     * @param $login
+     * @param $password
+     * @param $password2
+     * @param $email
+     * @param $name
+     * @param $surname
+     * @return bool
+     */
     public function register($login, $password, $password2, $email, $name, $surname) {
         $this->validateLogin($login);
         $this->validatePassword($password, $password2);
@@ -58,6 +82,15 @@ class Account {
         }
     }
 
+    /**
+     * Jest to funkcja, która dodaje dane użytkownika do bazy danych
+     * @param $login
+     * @param $password
+     * @param $email
+     * @param $name
+     * @param $surname
+     * @return bool
+     */
     public function insertData($login, $password, $email, $name, $surname) {
         $encryptedPw = md5($password);
 
@@ -71,6 +104,11 @@ class Account {
         return $result->execute();
     }
 
+    /**
+     * Jest to funkcja, która wyświetla na stronie error przy wprowadzaniu błędnych danych zalogowania/rejestracji
+     * @param $error
+     * @return string
+     */
     public function getError($error) {
         if (!in_array($error, $this->errorArray)) {
             $error = "";
@@ -84,6 +122,11 @@ class Account {
         }
     }
     //region VALIDATE
+
+    /**
+     * Jest to funkcja która waliduje poprawność loginu
+     * @param $login
+     */
     public function validateLogin($login) {
         if (strlen($login) > 25 || strlen($login) < 5) {
             array_push($this->errorArray, Constants::$usernameCharacters);
@@ -156,6 +199,14 @@ class Account {
         }
     }
 
+    /**
+     * Jest to funkcja która aktualizacje hasło
+     * @param $oldPw
+     * @param $pw
+     * @param $pw2
+     * @param $un
+     * @return bool
+     */
     public function updatePassword($oldPw, $pw, $pw2, $un) {
         $this->validateOldPassword($oldPw, $un);
         $this->validatePassword($pw, $pw2);

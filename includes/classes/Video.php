@@ -55,12 +55,18 @@ class Video{
         return $this->sqlData["entityId"];
     }
 
+    /**
+     * Funkcja powiększająca liczbę wyświetleń filmu w bazie dancyh
+     */
     public function incrementViews(){
         $query = $this->con->prepare("UPDATE videos SET views=views+1 WHERE id=:id");
         $query->bindValue(":id", $this->getId());
         $query->execute();
     }
 
+    /**
+     * Funkcja pobierająca sezon i odcinki serialu
+     */
     public function getSeasonAndEpisode(){
         if($this->isMovie()){
             return;
